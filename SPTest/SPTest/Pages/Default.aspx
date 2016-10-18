@@ -9,10 +9,29 @@
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
     <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.js" type="text/javascript"></script>
     <SharePoint:ScriptLink name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
     <meta name="WebPartPageExpansion" content="full" />
 
     <!-- Add your CSS styles to the following file -->
+    
+    <link href="~/Content/metro.css" rel ="stylesheet">
+    <link href="~/Content/metro-icons.css" rel ="stylesheet">
+    <link href="~/Content/metro-responsive.css" rel ="stylesheet">
+    <link href="~/Content/metro-schemes.css" rel="stylesheet">      
+    <script src="~/Scripts/metro.js"></script>
+    
+    <script>
+        function specialClick(){
+            var  charm = $("#menu-special").data("charm");
+            if (charm.element.data("opened") === true) {
+                charm.close();
+            } else {
+                charm.open();
+            }
+        }
+    </script>
+
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
 
     <!-- Add your JavaScript to the following file -->
@@ -26,6 +45,15 @@
 
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
+
+    <div class="container page-content">
+         <div class="fluent-menu" data-role="fluentmenu" data-on-special-click="specialClick">
+             <ul class="tabs-holder">
+                <li class="active"><a href="#tab_home">Home</a></li>
+            </ul>
+         </div>
+    </div>
+  
 
     <div>
         <p id="message">
