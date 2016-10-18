@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="ab49e06f-9c7a-4c8d-a7e7-e63490dac6b0" 
+        solutionId="ab49e06f-9c7a-4c8d-a7e7-e63490dac6b0" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="SPTest"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="fcdc04bf-af8a-4836-8ebf-6152b620d43c" />
+  </features>
+</package>
