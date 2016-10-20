@@ -61,21 +61,21 @@
             <div class="tab-panel" id="tab_home">
                 <div class="tab-panel-group">
                     <div class="tab-content-segment">
-                        <button class="fluent-big-button">
+                        <button type="button" class="fluent-big-button">
                             <span class="icon mif-clipboard"></span><br>Paste
                         </button>
                     </div>
                     <div class="tab-content-segment">
-                        <button class="fluent-button"><span class="icon mif-files-empty"></span>Copy</button>
-                        <button class="fluent-button"><span class="icon mif-bug"></span>Cut</button>
+                        <button type="button" class="fluent-button"><span class="icon mif-files-empty"></span>Copy</button>
+                        <button type="button" class="fluent-button"><span class="icon mif-bug"></span>Cut</button>
                     </div>
                     <div class="tab-content-segment">
-                        <button class="fluent-big-button">
+                        <button type="button" class="fluent-big-button">
                             <span class="icon mif-folder-plus"></span>Folder<br>Add
                         </button>
                     </div>
                     <div class="tab-content-segment">
-                        <button class="fluent-big-button dropdown-toggle">
+                        <button type="button" class="fluent-big-button dropdown-toggle">
                             <span class="icon mif-cancel"></span>
                             <span class="label"><br>Delete</span>
                         </button>
@@ -88,28 +88,28 @@
                 </div>
                 <div class="tab-panel-group">
                     <div class="tab-content-segment">
-                        <button class="fluent-button"><span class="icon mif-lock"></span>Lock</button>
-                        <button class="fluent-button"><span class="icon mif-unlock"></span>Unlock</button>
+                        <button type="button" class="fluent-button"><span class="icon mif-lock"></span>Lock</button>
+                        <button type="button" class="fluent-button"><span class="icon mif-unlock"></span>Unlock</button>
                     </div>
                     <div class="tab-content-segment">
-                        <button class="fluent-big-button"><span class="icon mif-undo"></span>Discard<br>checkout</button>
+                        <button  type="button"class="fluent-big-button"><span class="icon mif-undo"></span>Discard<br>checkout</button>
                     </div>
                     <div class="tab-content-segment">
-                        <button class="fluent-big-button"><span class="icon mif-credit-card"></span>Edit<br>metadata</button>
+                        <button type="button" class="fluent-big-button"><span class="icon mif-credit-card"></span>Edit<br>metadata</button>
                     </div>
                     <div class="tab-content-segment">
-                        <button class="fluent-big-button"><span class="icon mif-user"></span>Permissions</button>
+                        <button type="button" class="fluent-big-button"><span class="icon mif-user"></span>Permissions</button>
                     </div>
                 </div>
                 <div class="tab-panel-group">
-                    <button class="fluent-button dropdown-toggle">
+                    <button type="button" class="fluent-button dropdown-toggle">
                         <span class="label">Download</span>
                     </button>
                     <ul class="d-menu" data-role="dropdown">
                         <li><a href="#">archiving</a></li>
                         <li><a href="#">not archiving</a></li>
                     </ul>
-                    <button class="fluent-button dropdown-toggle">
+                    <button type="button" class="fluent-button dropdown-toggle">
                         <span class="label">Upload</span>
                     </button>
                     <ul class="d-menu" data-role="dropdown">
@@ -117,9 +117,91 @@
                         <li><a href="#">Folder</a></li>
                     </ul>
                 </div>
+                <div class="tab-group-group">
+                    <div class="input-control text">
+                        <input type="text">
+                        <button class="button" style="min-width: 40px">
+                            <span class="mif-search"></span></button>
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
+
+    <div style="border: 2px solid black; float: left; width: 33.3%; padding: auto">
+        <h5>TreeView</h5>
+        <div class="treeview" data-role="treeview">
+            <ul>
+                <li class="node">
+                    <span class="leaf">Favorites</span>
+                    <span class="node-toggle"></span>
+                    <ul>
+                        <li>
+                            <span class="leaf">Projects</span></li>
+                        <li>
+                            <span class="leaf">Downloads</span></li>
+                        <li>
+                            <span class="leaf">Desktop</span></li>
+                    </ul>
+                </li>
+                <li class="node collapsed active">
+                    <span class="leaf">OneDrive</span>
+                    <span class="node-toggle"></span>
+                    <ul style="display: none;">
+                        <li>
+                            <span class="leaf">Documents</span></li>
+                        <li class="node collapsed">
+                            <span class="leaf">Projects</span>
+                            <span class="node-toggle"></span>
+                            <ul style="display: none;">
+                                <li>
+                                    <span class="leaf">Metro UI CSS</span></li>
+                                <li>
+                                    <span class="leaf">Restyle</span></li>
+                                <li>
+                                    <a href="http://dnmarket.com" class="leaf">DNMarket</a>
+                                </li>
+                                <li>
+                                    <span class="leaf">Test Project</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="leaf">Photos</span></li>
+                        <li>
+                            <span class="leaf">Videos</span></li>
+                        <li>
+                            <span class="leaf">Music</span></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <span class="leaf">Location</span></li>
+                <li class="">
+                    <span class="leaf">Computers</span></li>
+                <li class="node">
+                    <span class="node-toggle"></span>
+                    <span class="leaf">Phones</span>
+                </li>
+                <li class="node">
+                    <span class="leaf"><span class="mif-tree"></span> Network</span>
+                    <span class="node-toggle"></span>
+                    <ul>
+                        <li>
+                            <span class="leaf"><span class="icon mif-tablet"></span> ASUS</span></li>
+                        <li>
+                            <span class="leaf"><span class="icon mif-laptop"></span> BARACUDA</span></li>
+                        <li>
+                            <span class="leaf"><span class="icon mif-printer"></span> EPSON</span></li>
+                        <li class="">
+                            <span class="leaf"><span class="icon mif-database"></span> VUSOLO</span></li>
+                        <li class="">
+                            <span class="leaf"><span class="icon mif-phone"></span> GALAXY S4</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
 
     <div>
         <p id="message">
