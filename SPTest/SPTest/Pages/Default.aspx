@@ -53,6 +53,7 @@
 
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
+    <%-- Ribbon menu--%>
      <div class="fluent-menu" data-role="fluentmenu" data-on-special-click="specialClick">
         <ul class="tabs-holder">
             <li class="active"><a href="#tab_home">Home</a></li>
@@ -127,8 +128,16 @@
             </div>
         </div>
     </div>
-
-    <div style="border: 1px solid grey; float: left; width: 20%; padding-left: 3px; min-height: 500px">
+    
+    <div style="min-height: 500px; padding-top: 5px;">
+   
+         <%--Tree View--%>    
+    <div style="border: 1px ; float: left; width: 20%; padding-left: 3px;">
+        <div class="input-control text full-size" data-role="input">
+            <input type="text" style="padding-right: 58px;">
+            <button class="button" type="button" style="min-width: 40px">
+                <span class="mif-search"></span></button>
+        </div>
         <h5>Site List</h5>
         <div class="treeview" data-role="treeview">
             <ul>
@@ -160,7 +169,8 @@
         </div>
     </div>
 
-    <div style="border: 2px; float: left; width: 80%; padding-left: 3px; min-height: 500px">
+    <%--Tabs--%>
+    <div style="border: 2px; float: left; width: 80%; padding-left: 3px;">
         <div class="tabcontrol2" data-role="tabcontrol">
             <ul class="tabs">
                 <li class="active">
@@ -180,13 +190,5 @@
             </div>
         </div>
     </div>
-
-
-<%--    <div>
-        <p id="message">
-            <!-- The following content will be replaced with the user name when you run the app - see App.js -->
-            initializing...
-        </p>
-    </div>--%>
-
+    </div>
 </asp:Content>
