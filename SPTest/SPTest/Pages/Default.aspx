@@ -99,7 +99,7 @@
                         <button type="button" class="fluent-big-button"><span class="icon mif-credit-card"></span>Edit<br>metadata</button>
                     </div>
                     <div class="tab-content-segment">
-                        <button type="button" class="fluent-big-button"><span class="icon mif-user"></span>Permissions</button>
+                        <button type="button" class="fluent-big-button"><span class="icon mif-user"></span><br>Permissions</button>
                     </div>
                 </div>
                 <div class="tab-panel-group">
