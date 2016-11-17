@@ -47,19 +47,27 @@
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b75f40f9-708a-4d49-98c5-5a2471558475}</SharePointProjectItemId>
     </None>
+    <Content Include="Content\ui-grid.min.css" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="RibbonCustomAction3\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ae824e0c-d5a5-4513-ade6-db25b415024f}</SharePointProjectItemId>
+    </None>
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{88d1e3da-461e-4be3-9c99-e4dca6475f92}</SharePointProjectItemId>
     </None>
+    <Content Include="RibbonCustomAction3\Elements.xml">
+      <OpcRelationship>feature-elementmanifest</OpcRelationship>
+    </Content>
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\ui-grid.min.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>

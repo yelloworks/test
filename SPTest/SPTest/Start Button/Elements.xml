@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction Id="1e1ca562-9141-4d80-b400-49270a8bd772.Start Button"
+                RegistrationType="List"
+                RegistrationId="101"
+                Location="CommandUI.Ribbon"
+                Sequence="10001"
+                Title="Invoke &apos;Start_Button&apos; action">
+    <CommandUIExtension>
+      <!-- 
+      Update the UI definitions below with the controls and the command actions
+      that you want to enable for the custom action.
+      -->
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.ListItem.New.Controls._children">
+          <Button Id="Ribbon.ListItem.New.Start ButtonButton"
+                  Alt="Request Start_Button"
+                  Sequence="100"
+                  Command="Invoke_Start ButtonButtonRequest"
+                  LabelText="Request Start_Button"
+                  TemplateAlias="o1"
+                  Image32by32="data:image/png;base64,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"
+                  Image16by16="_layouts/15/images/placeholder16x16.png" />
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+      <CommandUIHandlers>
+        <CommandUIHandler Command="Invoke_Start ButtonButtonRequest"
+                          CommandAction="~appWebUrl/Pages/Default.aspx?{StandardTokens}&amp;SPListItemId={SelectedItemId}&amp;SPListId={SelectedListId}"/>
+      </CommandUIHandlers>
+    </CommandUIExtension >
+  </CustomAction>
+</Elements>
+
