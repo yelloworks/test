@@ -7,5 +7,48 @@
     <File Path="Scripts\jquery-1.9.1.js" Url="Scripts/jquery-1.9.1.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-1.9.1.intellisense.js" Url="Scripts/jquery-1.9.1.intellisense.js" ReplaceContent="TRUE" />
     <File Path="Scripts\ui-grid.min.js" Url="Scripts/ui-grid.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-tree-widget.js" Url="Scripts/angular-tree-widget.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-recursion.js" Url="Scripts/angular-recursion.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\version.json" Url="Scripts/version.json" ReplaceContent="TRUE" />
+    <File Path="Scripts\errors.json" Url="Scripts/errors.json" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular.min.js.map" Url="Scripts/angular.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular.min.js" Url="Scripts/angular.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular.js" Url="Scripts/angular.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-touch.min.js.map" Url="Scripts/angular-touch.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-touch.min.js" Url="Scripts/angular-touch.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-touch.js" Url="Scripts/angular-touch.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-scenario.js" Url="Scripts/angular-scenario.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-sanitize.min.js.map" Url="Scripts/angular-sanitize.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-sanitize.min.js" Url="Scripts/angular-sanitize.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-sanitize.js" Url="Scripts/angular-sanitize.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-route.min.js.map" Url="Scripts/angular-route.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-route.min.js" Url="Scripts/angular-route.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-route.js" Url="Scripts/angular-route.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-resource.min.js.map" Url="Scripts/angular-resource.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-resource.min.js" Url="Scripts/angular-resource.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-resource.js" Url="Scripts/angular-resource.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-parse-ext.min.js.map" Url="Scripts/angular-parse-ext.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-parse-ext.min.js" Url="Scripts/angular-parse-ext.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-parse-ext.js" Url="Scripts/angular-parse-ext.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-mocks.js" Url="Scripts/angular-mocks.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-messages.min.js.map" Url="Scripts/angular-messages.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-messages.min.js" Url="Scripts/angular-messages.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-messages.js" Url="Scripts/angular-messages.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-message-format.min.js.map" Url="Scripts/angular-message-format.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-message-format.min.js" Url="Scripts/angular-message-format.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-message-format.js" Url="Scripts/angular-message-format.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-loader.min.js.map" Url="Scripts/angular-loader.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-loader.min.js" Url="Scripts/angular-loader.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-loader.js" Url="Scripts/angular-loader.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-csp.css" Url="Scripts/angular-csp.css" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-cookies.min.js.map" Url="Scripts/angular-cookies.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-cookies.min.js" Url="Scripts/angular-cookies.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-cookies.js" Url="Scripts/angular-cookies.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-aria.min.js.map" Url="Scripts/angular-aria.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-aria.min.js" Url="Scripts/angular-aria.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-aria.js" Url="Scripts/angular-aria.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-animate.min.js.map" Url="Scripts/angular-animate.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-animate.min.js" Url="Scripts/angular-animate.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-animate.js" Url="Scripts/angular-animate.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -8,5 +8,48 @@
     <ProjectItemFile Source="jquery-1.9.1.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery-1.9.1.intellisense.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="ui-grid.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-tree-widget.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-recursion.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="version.json" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="errors.json" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-touch.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-touch.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-touch.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-scenario.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-sanitize.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-sanitize.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-sanitize.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-route.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-route.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-route.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-resource.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-resource.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-resource.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-parse-ext.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-parse-ext.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-parse-ext.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-mocks.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-messages.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-messages.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-messages.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-message-format.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-message-format.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-message-format.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-loader.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-loader.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-loader.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-csp.css" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-cookies.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-cookies.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-cookies.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-aria.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-aria.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-aria.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-animate.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-animate.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-animate.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

@@ -17,10 +17,12 @@
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
     <link rel ="stylesheet" type="text/css" href="../Content/ui-grid.min.css">
 
-    <!-- Add your JavaScript to the following file -->
-    <script type="text/javascript" src="../Scripts/App.js"></script>
-    <script type="text/javascript" src="../Scripts/ui-grid.min.js"></script>
 
+    <!-- Add your JavaScript to the following file -->
+    <script type="text/javascript" src="../Scripts/angular.js"></script>
+    
+    <script type="text/javascript" src="../Scripts/ui-grid.min.js"></script>
+    <script type="text/javascript" src="../Scripts/App.js"></script>
   
 <%--    <script>
         function functionName1() {
@@ -118,8 +120,17 @@
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
     
+<html lang="en" ng-app ="aps">
+    <div ng-controller="firstCtrl">
+        <input type="button" value="add" ng-click='addToBuff()'/>
+        <input type="button" value="get" ng-click='get()'/>
+    </div>
+    <div ng-controller="secondCtrl">
+        <input type="button" value="add" ng-click='addToBuff()'/>
+        <input type="button" value="get" ng-click='get()'/>
+    </div>
+    </html>    
     
-    <input type="button" value="Button 3" onclick="documentQuery();"/>
 
 
 </asp:Content>
