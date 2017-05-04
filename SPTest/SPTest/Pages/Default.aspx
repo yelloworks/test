@@ -16,13 +16,20 @@
     <!-- Add your CSS styles to the following file -->
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
     <link rel ="stylesheet" type="text/css" href="../Content/ui-grid.min.css">
-
+    <link href="//cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.css" rel="stylesheet" />
 
     <!-- Add your JavaScript to the following file -->
-    <script type="text/javascript" src="../Scripts/angular.js"></script>
-    
+   <%--<script type="text/javascript" src="../Scripts/angular.js"></script>--%>  
+    <%--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" type="text/javascript"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js" ></script>
+      <script src="http://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.js"></script>
+
     <script type="text/javascript" src="../Scripts/ui-grid.min.js"></script>
     <script type="text/javascript" src="../Scripts/App.js"></script>
+    
+
+    <%-- <script type="text/javascript" src="/_layouts/15/SP.RequestExecutor.js"></script>--%>
   
 <%--    <script>
         function functionName1() {
@@ -121,14 +128,56 @@
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
     
 <html lang="en" ng-app ="aps">
-    <div ng-controller="firstCtrl">
-        <input type="button" value="add" ng-click='addToBuff()'/>
-        <input type="button" value="get" ng-click='get()'/>
+    <div ng-controller="testCtrl">
+        <input type="button" value="add" ng-click='start()'/>
+        <input type="button" value="add2" ng-click='start2()'/>
+        <input type="button" value="add3" ng-click='start3()'/>
     </div>
-    <div ng-controller="secondCtrl">
-        <input type="button" value="add" ng-click='addToBuff()'/>
-        <input type="button" value="get" ng-click='get()'/>
+    
+        <div ng-controller="testCheckinCtrl">
+        <input type="button" value="add" ng-click='start()'/>
+        <input type="button" value="add2" ng-click='start2()'/>
+        <input type="button" value="add3" ng-click='start3()'/>
     </div>
+    
+    <div ng-controller  ="testDownload">
+                <input type="button" value="add" ng-click='start()'/>
+        <input type="button" value="add2" ng-click='start2()'/>
+        <%--<input type="button" value="add3" ng-click='start3()'/>--%>
+        <input type="file" value ="file" id ="fileinput" multiple style ="display: none;"/>
+        <input type="button" value="add3" onclick="document.getElementById('fileinput').click();" />
+    </div>
+    
+        <div ng-controller  ="testPermissions">
+                <input type="button" value="modal" ng-click='start()'/>
+        <input type="button" value="add2" ng-click='start2()'/>
+        <%--<input type="button" value="add3" ng-click='start3()'/>--%>
+
+    </div>
+    
+    
+
+        <div>
+            <div ng-controller="testToaster">
+            <!-- NOTE: remove 'animation-class': 'toast-top-center' if you want it on the left top corner --> 
+                <toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 0 } }"></toaster-container>
+                <input type="button" class="btn btn-primary" style="margin: 150px 0 0 150px;" ng-click="pop()">Show toasts</input>
+                <br />
+                <button class="btn btn-danger" style="margin: 10px 0 0 150px;" ng-click="clear()">Clear toasts</button>
+            </div>
+        </div>
+        
+        <script type="text/ng-template" id="toasterBodyTmpl.html">
+          <p>Render a default template!</p>
+        </script>
+        
+        <script type="text/ng-template" id="myTemplate.html">
+          <p>Render a custom template! {{bar}}</p>
+        </script>
+        
+        <script type="text/ng-template" id="myTemplateWithData.html">
+          <p>Here it is! {{toaster.data}}</p>
+        </script>
     </html>    
     
 
