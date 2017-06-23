@@ -83,5 +83,14 @@
     <File Path="Scripts\angular-ui\ui-bootstrap.js" Url="Scripts/angular-ui/ui-bootstrap.js" ReplaceContent="TRUE" />
     <File Path="Scripts\angular-ui\ui-bootstrap-tpls.min.js" Url="Scripts/angular-ui/ui-bootstrap-tpls.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\angular-ui\ui-bootstrap-tpls.js" Url="Scripts/angular-ui/ui-bootstrap-tpls.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\SP.debug.js" Url="Scripts/SP.debug.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jsoncmp.js" Url="Scripts/jsoncmp.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jsoncmp.ext.js" Url="Scripts/jsoncmp.ext.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\select.min.js.map" Url="Scripts/select.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\select.min.js" Url="Scripts/select.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\select.js" Url="Scripts/select.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-ui-switch.min.js" Url="Scripts/angular-ui-switch.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-ui-switch.js" Url="Scripts/angular-ui-switch.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\indeterminate.js" Url="Scripts/indeterminate.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

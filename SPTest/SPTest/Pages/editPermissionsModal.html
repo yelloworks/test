@@ -1,0 +1,12 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Choose Role Inheritance</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <ul style="list-style-type: none" index="$index" ng-repeat="item in $ctrl.list">
+        <li><div><input type="checkbox" ui-indeterminate="item.indeterminate" ng-model ="item.selected"> <label>{{item.name}} - {{item.description}}</label></div></li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

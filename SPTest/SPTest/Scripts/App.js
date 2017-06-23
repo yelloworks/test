@@ -2,7 +2,7 @@
 
 //ExecuteOrDelayUntilScriptLoaded(initializePage, "sp.js");
 
-angular.module('aps', ['toaster', "ngAnimate", "ui.bootstrap"]);
+angular.module('aps', ['toaster', "ngAnimate", "ngSanitize", "ui.bootstrap", 'ui.select', "uiSwitch", 'ui.indeterminate']);
 
 /*
 //angular.module('aps').controller('testCtrl', function($scope,$log) {
@@ -296,9 +296,6 @@ angular.module('aps')
 
 
         */
-
-
-
 
 ///Copy
 angular.module('aps')
@@ -1187,11 +1184,11 @@ angular.module('aps')
             $scope.bar = 'Hi';
 
             $scope.pop = function() {
-                /* toaster.success({title: "title", body:"text1"});
+                 toaster.success({title: "title", body:"text1"});
                  toaster.error("title", "text2");
-                 toaster.pop({type: 'wait', title: "title", body:"text"});*/
+                 toaster.pop({type: 'wait', title: "title", body:"text"});
                 toaster.pop('success', "title", '<ul><li>Render html</li></ul>', 5000, 'trustedHtml');
-                /* toaster.pop('error', "title", '<ul><li>Render html</li></ul>', null, 'trustedHtml');
+                 toaster.pop('error', "title", '<ul><li>Render html</li></ul>', null, 'trustedHtml');
                  toaster.pop('wait', "title", null, null, 'template');
                  toaster.pop('warning', "title", "myTemplate.html", null, 'template');
                  toaster.pop('note', "title", "text");
@@ -1201,7 +1198,7 @@ angular.module('aps')
                      return true;
                  });
                  toaster.pop('warning', "Hi ", "{template: 'myTemplateWithData.html', data: 'MyData'}", 15000, 'templateWithData');
-                 toaster.pop('warning', "title", 'Bill');*/
+                 toaster.pop('warning', "title", 'Bill');
             };
 
             $scope.goToLink = function(toaster) {
@@ -1218,31 +1215,458 @@ angular.module('aps')
 
 angular.module('aps')
     .controller('testPermissions',
-        function ($scope, $uibModal, $log) {
+        function ($scope, $uibModal, $log, $q) {
+
+
+                    //if (displayItems.length == 0) {
+                    //    displayItems.push({ name: member.get_title(), id: role.get_principalId(), defenitions: defenitionsItems, isSame: true });
+                    //} else {
+                    //    singlItemPermissions.push({ name: member.get_title(), id: role.get_principalId(), defenitions: defenitionsItems });
+            //};
+
+
+            //need to see if there is no permissions at all
+
+            var displayItems = []; 
+            var singlItems = [];
+
+            function getItemPermissions(ctx, role) {
+                var defered = $q.defer();
+                var defenition = role.get_roleDefinitionBindings();
+                var member = role.get_member();
+                ctx.load(defenition);
+                ctx.load(member, "Title");
+                ctx.executeQueryAsync(function() {
+                        $log.log(member.get_title());
+                        var defEnumerator = defenition.getEnumerator();
+                        var defenitionsItems = [];
+                        while (defEnumerator.moveNext()) {
+                            var defItem = defEnumerator.get_current();
+                            //defenitionsItems.push({ name: defItem.get_name(), id: defItem.get_id() });
+                            defenitionsItems.push(defItem.get_name());
+                        }
+                        // singlItems.push({ name: member.get_title(), id: role.get_principalId(), defenitions: defenitionsItems });
+                        defered.resolve({
+                            name: member.get_title(),
+                            id: role.get_principalId(),
+                            defenitions: defenitionsItems,
+                        });
+                        $log.log("Done");
+                    },
+                    function() {
+                        defered.reject();
+                    });
+                return defered.promise;
+            }
+
+            function getGroupList(url, listId, itemId) {
+                var ctx = new SP.ClientContext(url);
+                var web = ctx.get_web();
+                var list = web.get_lists().getById(listId);
+                var item = list.getItemById(itemId);
+
+                var roles = item.get_roleAssignments();
+
+                ctx.load(roles);
+                ctx.executeQueryAsync(function() {
+                    var rolesEnumerator = roles.getEnumerator();
+                    var rolesList = [];
+                    while (rolesEnumerator.moveNext()) {
+                        rolesList.push(rolesEnumerator.get_current());           
+                    }
+                    getAllRoles(rolesList, ctx)
+                        .then(function (results) {
+                            if (displayItems.length == 0) {
+                                displayItems = results;
+                                $log.log(displayItems);
+                            } else {
+                                var out = [];
+                                
+                                results.forEach(function(item, i) {
+                                    var itemIndex = findIndex(item.id);
+                                    if (itemIndex != -1) {
+                                        Array.prototype.defUniq = function(a) {
+                                            return this.filter(function(b) {
+                                                return a.indexOf(b) < 0;
+                                            });
+                                        };
+                                        var uniqDefinitions = displayItems[itemIndex].defenitions.defUniq(item.defenitions);
+                                        if (uniqDefinitions.length == 0) {
+                                            uniqDefinitions = item.defenitions.defUniq(displayItems[itemIndex].defenitions);
+                                            if (uniqDefinitions.length == 0)
+                                                {out.push(item);}
+                                            
+                                        };
+                                    };
+                                    
+
+                                });
+
+                                displayItems = out;
+                                $log.log(results);
+                                $log.log(displayItems);
+                            };
+                            //findIndex(1);
+                            //findIndex(110);
+                            
+                        });
+                }, function() {
+                    
+                });
+            };
+
+            function findIndex(serchItemId) {
+                var elements = displayItems.map(function(x) {
+                    return x.id;
+                }).indexOf(serchItemId);
+                var objFound = displayItems[elements];
+                return elements;
+                //  $log.log(elements);
+                //for (var i = 0; i < displayItems.length; i++) {
+                //    if(displayItems[i].id == serchItem.id)
+                //}
+            };
+
+            function getAllRoles(roles, ctx) {
+                var promises = roles.map(function(role) {
+                    var defered = $q.defer();
+                    getItemPermissions(ctx, role).then(function(item) {
+                        defered.resolve(item);
+                    });
+                    return defered.promise;
+                });
+                return $q.all(promises);
+            }
+
+            function deletePermission(url, listId, itemId, principalId)
+            {
+                var defered = $q.defer();
+                var ctx = new SP.ClientContext(url);
+                var web = ctx.get_web();
+                var list = web.get_lists().getById(listId);
+                var item = list.getItemById(itemId);
+
+                var roles = item.get_roleAssignments().getByPrincipalId(principalId);
+                roles.deleteObject();
+                ctx.executeQueryAsync(function() {
+                    defered.resolve();
+                }, function () {
+                    defered.reject();
+                });
+                return defered.promise;
+            }
+
+
+            function getAllRoleDefinitions() {
+                var ctx = new SP.ClientContext(url);
+                var web = ctx.get_web();
+                var roles = web.get_roleDefinitions();
+                ctx.load(roles);
+                ctx.executeQueryAsync(function() {
+                    var rolesEnumerator = roles.getEnumerator();
+                    while (rolesEnumerator.moveNext()) {
+                        var role = rolesEnumerator.get_current();
+                        var roleName = role.get_name();
+                        var roleId = role.get_id();
+                        $log.log(member);
+                        $log.log(id);
+                    }
+                }, function() {
+                    
+                });
+            };
+
+
+            var permissionItem = [];
+
+            function getAllUsersAndGroups(url) {
+                var ctx = new SP.ClientContext(url);
+                var web = ctx.get_web();
+                var groups = web.get_siteGroups();
+                var users = web.get_siteUsers();
+                ctx.load(groups);
+                ctx.load(users);
+                ctx.executeQueryAsync(function () {
+                    var groupsEnumerator = groups.getEnumerator();
+                    while (groupsEnumerator.moveNext()) {
+                        var group = groupsEnumerator.get_current();
+                        permissionItem.push({
+                            name: group.get_title(),
+                            id: group.get_id(),
+                            principalType: group.get_principalType()
+                        });
+                    }
+                    var usersEnumerator = users.getEnumerator();
+                    while (usersEnumerator.moveNext()) {
+                        var user = usersEnumerator.get_current();
+                        permissionItem.push({
+                            name: user.get_title(),
+                            id: user.get_id(),
+                            principalType: user.get_principalType()
+                        });
+                    }
+                    $log.log(permissionItem);
+
+                }, function () {
+                    $log.log("no user");
+
+                });
+
+            };
+
+            $scope.modtest = false;
+            $scope.start2 = function () {
+
+                var someTmp = GetUrlKeyValue("SPAppWebUrl");
+                var it = someTmp.split('/');
+                var itnew = it.slice(0, it.length - 1);
+                var url = itnew.join('/');
+
+
+                getGroupList(url, "{1CF4F7DD-8227-4293-AF31-3819FDB4A8F7}", 2);
+                getGroupList(url, "{1CF4F7DD-8227-4293-AF31-3819FDB4A8F7}", 1);
+                getGroupList(url, "{1CF4F7DD-8227-4293-AF31-3819FDB4A8F7}", 3);
+ 
+            };
+
             $scope.start = function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
-                    templateUrl: 'folderNameModal.html',
-                    controller: 'permissionsModal',
-                    controllerAs: '$ctrl'
+                    templateUrl: 'editPermissionsModal.html',
+                    controller: 'editPermissionsModal',
+                    controllerAs: '$ctrl',
+                    resolve: {
+                        allList: function () {
+                            return [{
+                                name: "first",
+                                id: 323123,
+                                description: "The FIRST!",
+                                selected: false,
+                                indeterminate: false
+                            },
+                            {
+                                name: "Second",
+                                id: 123123,
+                                description: "The Second!!!",
+                                selected: true,
+                                indeterminate: false
+                            },
+                            {
+                                name: "third",
+                                id: 463464,
+                                description:"The Third!!",
+                                selected: false,
+                                indeterminate: true
+                            }];
+                        }
+                    }
                 });
-                modalInstance.result.then(function (folderName) {
+                modalInstance.result.then(function (out) {
+                    $log.log(out);
 
                 }, function () {
                     $log.info('Modal dismissed at: ' + new Date());
                 });
             };
+
+            $scope.start3 = function () {
+                var someTmp = GetUrlKeyValue("SPAppWebUrl");
+                var it = someTmp.split('/');
+                var itnew = it.slice(0, it.length - 1);
+                var url = itnew.join('/');
+
+                getAllUsersAndGroups(url);
+            };
+            $scope.start4 = function () {
+                var someTmp = GetUrlKeyValue("SPAppWebUrl");
+                var it = someTmp.split('/');
+                var itnew = it.slice(0, it.length - 1);
+                var url = itnew.join('/');
+
+                
+                deletePermission(url, "{1CF4F7DD-8227-4293-AF31-3819FDB4A8F7}", 2, 1);
+            };
+
+            $scope.start5 = function () {
+                $scope.modtest = !$scope.modtest;
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'chooseRoleInheritanceModal.html',
+                    controller: 'chooseRoleInheritanceModal',
+                    controllerAs: '$ctrl',
+                    resolve: {
+                        inheritance: function () {
+                            return $scope.modtest;
+                    }
+            }
+                });
+                modalInstance.result.then(function (out) {
+                    $log.log("isInheritance: " + out.isInheritance);
+                    $log.log("applyToChild: " + out.applyToChild);
+
+                }, function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
+            }
+
+
         });
-angular.module('Abs')
-    .controller('permissionsModal',
-        function ($uibModalInstance) {
+
+
+angular.module('aps')
+    .controller('grantPermissionsModal',
+        function ($uibModalInstance, $log, $q) {
             var $ctrl = this;
             $ctrl.text = "New Folder";
-            $ctrl.editRoles = function() {
-                window.location.href = url + "/_layouts/addrole.aspx";
+            $ctrl.editRoles = function () {
+
+                var someTmp = GetUrlKeyValue("SPAppWebUrl");
+                var it = someTmp.split('/');
+                var itnew = it.slice(0, it.length - 1);
+                var url = itnew.join('/');
+                window.open(url + "/_layouts/addrole.aspx");
+            };
+
+            var onStartGroups = getAllUsersAndGroups();
+            var onStartRoles = getAllRoleDefinitions();
+
+            $ctrl.permissionItemSelected = [];
+            $ctrl.roleItemsSelected = [];
+
+            $ctrl.permissionItem = [];
+            $ctrl.roleDefinitionsItems = [];
+            //$ctrl.usersAndGroups = [];
+            
+            //function enumToText(val) {
+            //    var result = "";
+            //    while (val > 0) {
+            //        result = result + String.fromCharCode(val % 256);
+            //        val = Math.floor(val / 256);
+            //    }
+            //    return result;
+            //}
+
+            var enumPrincipalType = {
+                0: "none",
+                1: "user",
+                2: "Distribution List",
+                4: "Security Group",
+                8: "SharePoint Group",
+                15: "All"
+            };
+            function getPrincipalTypeValue(key) {
+                return enumPrincipalType[key];
+            }
+            function getAllUsersAndGroups(url) {
+                var ctx = new SP.ClientContext(url);
+                var web = ctx.get_web();
+                var groups = web.get_siteGroups();
+                var users = web.get_siteUsers();
+                ctx.load(groups);
+                ctx.load(users);
+                ctx.executeQueryAsync(function () {
+                    var groupsEnumerator = groups.getEnumerator();
+                    while (groupsEnumerator.moveNext()) {
+                        var group = groupsEnumerator.get_current();
+                        $ctrl.permissionItem.push({
+                            name: group.get_title(),
+                            id: group.get_id(),
+                            principalType: group.get_principalType(),
+                            type: getPrincipalTypeValue(group.get_principalType())
+                        });
+                    }
+                    var usersEnumerator = users.getEnumerator();
+                    while (usersEnumerator.moveNext()) {
+                        var user = usersEnumerator.get_current();
+                        $ctrl.permissionItem.push({
+                            name: user.get_title(),
+                            id: user.get_id(),
+                            principalType: user.get_principalType(),
+                            type: getPrincipalTypeValue(user.get_principalType())
+                        });
+                    }
+                    $log.log($ctrl.permissionItem);
+
+                }, function () {
+                    $log.log("no user");
+
+                });
+
+            };
+
+
+
+            function getAllRoleDefinitions(url) {
+                var ctx = new SP.ClientContext(url);
+                var web = ctx.get_web();
+                var roles = web.get_roleDefinitions();
+                ctx.load(roles);
+                ctx.executeQueryAsync(function () {
+                    var rolesEnumerator = roles.getEnumerator();
+                    while (rolesEnumerator.moveNext()) {
+                        var role = rolesEnumerator.get_current();
+                        var roleName = role.get_name();
+                        var roleId = role.get_id();
+                        $ctrl.roleDefinitionsItems.push({
+                            name: roleName,
+                            id: roleId
+                        });
+
+                    }
+                }, function () {
+
+                });
+            };
+            //function findIndex(serchItemId) {
+            //    var elements = $ctrl.usersAndGroups.map(function (x) {
+            //        return x.id;
+            //    }).indexOf(serchItemId);
+            //    // var objFound = $ctrl.gridOptions.data[elements];
+            //    return elements;
+            //};
+
+            //$ctrl.removeItem = function(index) {
+            //    $ctrl.usersAndGroups.splice(index, 1);
+            //}
+            //$ctrl.try = function() {
+            //    $log.log(out);
+            //}
+
+            $ctrl.addBtnClicked = function () {
+                if ($ctrl.out!= undefined && $ctrl.out.name != undefined) {
+                    if (findIndex($ctrl.out.id) == -1) {
+                        $ctrl.usersAndGroups.push($ctrl.out);
+                        $ctrl.out = undefined;
+                    }                   
+                }else {
+                    
                 };
+                $ctrl.out = undefined; //clear only
+            };
+            
+            $ctrl.try = function() {
+                
+                $log.log($ctrl.roleItemsSelected);
+                $log.log($ctrl.permissionItemSelected);
+
+            }
             $ctrl.ok = function () {
                 $uibModalInstance.close($ctrl.text);
+            };
+            $ctrl.cancel = function () {
+                $uibModalInstance.dismiss('cancel');
+            };
+        });
+
+angular.module('aps')
+    .controller('editPermissionsModal',
+        function ($uibModalInstance, $log, $q, allList) {
+            var $ctrl = this;
+            $ctrl.text = "New Folder";
+            $ctrl.list = allList;
+          
+            $ctrl.ok = function () {
+                $uibModalInstance.close($ctrl.list);
             };
             $ctrl.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
@@ -1252,3 +1676,52 @@ angular.module('Abs')
 
 
 
+angular.module('aps')
+    .controller("chooseRoleInheritanceModal",
+        function ($uibModalInstance, $log, inheritance) {
+            var $ctrl = this;
+            $ctrl.isInheritance = inheritance;
+            $ctrl.applyToChild = false;
+
+            $ctrl.ok = function() {
+                $uibModalInstance.close({ isInheritance: $ctrl.isInheritance, applyToChild: $ctrl.applyToChild });
+            };
+            $ctrl.cancel = function() {
+                $uibModalInstance.dismiss('cancel');
+            };
+        });
+
+
+angular.module('aps')
+    .filter('propsFilter',
+        function() {
+            return function(items, props) {
+                var out = [];
+
+                if (angular.isArray(items)) {
+                    var keys = Object.keys(props);
+
+                    items.forEach(function(item) {
+                        var itemMatches = false;
+
+                        for (var i = 0; i < keys.length; i++) {
+                            var prop = keys[i];
+                            var text = props[prop].toLowerCase();
+                            if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+                                itemMatches = true;
+                                break;
+                            }
+                        }
+
+                        if (itemMatches) {
+                            out.push(item);
+                        }
+                    });
+                } else {
+                    // Let the output be the input untouched
+                    out = items;
+                }
+
+                return out;
+            };
+        });

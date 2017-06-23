@@ -13,21 +13,42 @@
     <SharePoint:ScriptLink name="SP.Runtime.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
     <meta name="WebPartPageExpansion" content="full" />
 
+<%--    <% #if FOO %>
+    <script type="text/javascript" src="../Scripts/SP.debug.js"> </script>
+    <% #endif %>--%>
+
     <!-- Add your CSS styles to the following file -->
-    <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
-    <link rel ="stylesheet" type="text/css" href="../Content/ui-grid.min.css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.css" rel="stylesheet" />
+    <link rel="Stylesheet" type="text/css" href="../Content/App.css"/>
+    <link rel="stylesheet" type="text/css" href="../Content/ui-grid.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.css" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <link rel="stylesheet" href="../Content/angular-ui-switch.css">
+    <link rel="stylesheet" href="../Content/select.css">
 
     <!-- Add your JavaScript to the following file -->
    <%--<script type="text/javascript" src="../Scripts/angular.js"></script>--%>  
     <%--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" type="text/javascript"></script>--%>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js" ></script>
-      <script src="http://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.js"></script>
+    <script src="http://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.js"></script>
+    <script src ="../Scripts/indeterminate.js"></script>
+    <script src="../Scripts/angular-ui-switch.js"></script>
 
     <script type="text/javascript" src="../Scripts/ui-grid.min.js"></script>
+    <script type="text/javascript" src="../Scripts/select.js"></script>  
+    <%--<script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>--%>
+
+    <script type="text/javascript" src="../Scripts/angular-ui/ui-bootstrap.js"> </script>
+    <script type="text/javascript" src="../Scripts/angular-ui/ui-bootstrap-tpls.min.js"> </script>    
+
     <script type="text/javascript" src="../Scripts/App.js"></script>
-    
+
+
+
+
 
     <%-- <script type="text/javascript" src="/_layouts/15/SP.RequestExecutor.js"></script>--%>
   
@@ -143,23 +164,28 @@
     <div ng-controller  ="testDownload">
                 <input type="button" value="add" ng-click='start()'/>
         <input type="button" value="add2" ng-click='start2()'/>
-        <%--<input type="button" value="add3" ng-click='start3()'/>--%>
         <input type="file" value ="file" id ="fileinput" multiple style ="display: none;"/>
         <input type="button" value="add3" onclick="document.getElementById('fileinput').click();" />
     </div>
-    
-        <div ng-controller  ="testPermissions">
-                <input type="button" value="modal" ng-click='start()'/>
-        <input type="button" value="add2" ng-click='start2()'/>
-        <%--<input type="button" value="add3" ng-click='start3()'/>--%>
 
-    </div>
-    
+     
+
+<div ng-controller="testPermissions">
+    <input type="button" value="modal" ng-click='start()'/>
+    <input type="button" value="add2" ng-click='start2()'/>
+    <input type="button" value="try" ng-click='start3()'/>
+    <input type="button" value="del" ng-click='start4()'/>
+    <input type="button" value="inher" ng-click='start5()'/>
+
+
+
+</div>
+    <switch id="enabled" name="enabled" ng-model="enabled" class="green"></switch>
     
 
         <div>
             <div ng-controller="testToaster">
-            <!-- NOTE: remove 'animation-class': 'toast-top-center' if you want it on the left top corner --> 
+
                 <toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 0 } }"></toaster-container>
                 <input type="button" class="btn btn-primary" style="margin: 150px 0 0 150px;" ng-click="pop()">Show toasts</input>
                 <br />

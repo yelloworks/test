@@ -84,5 +84,14 @@
     <ProjectItemFile Source="angular-ui\ui-bootstrap.js" Target="Scripts\angular-ui\" Type="ElementFile" />
     <ProjectItemFile Source="angular-ui\ui-bootstrap-tpls.min.js" Target="Scripts\angular-ui\" Type="ElementFile" />
     <ProjectItemFile Source="angular-ui\ui-bootstrap-tpls.js" Target="Scripts\angular-ui\" Type="ElementFile" />
+    <ProjectItemFile Source="SP.debug.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jsoncmp.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jsoncmp.ext.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="select.min.js.map" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="select.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="select.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-ui-switch.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-ui-switch.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="indeterminate.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>
